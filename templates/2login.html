@@ -1,0 +1,95 @@
+
+{% extends "00cat3.html" %}
+{% block x_script %}
+<meta name="google-signin-scope" content="profile email">
+<meta name="google-signin-client_id" content="897661527969-cqpqlh62u214odr8751i1iq3g6a71std.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<meta name="google-signin-hosted_domain" content="vitbhopal.ac.in">
+{% endblock %}
+{% block body %}
+<div class="page-wraper">
+	<div id="loading-icon-bx"></div>
+	<div class="account-form">
+		<div class="account-head" style="background-image:url(assets/images/background/bg2.jpg);">
+			<a href="https://vitian.in/"><h1 style="color: white;">vitian</h1></a>
+		</div>
+		<div class="account-form-inner">
+			<div class="account-container">
+				<div class="heading-bx left">
+					<h2 class="title-head">Join vitian <span>Community</span></h2>
+					<small>Only People With VIT email ID can join.</small>
+				</div>	
+				<form class="contact-bx" method="POST"  action = "/login" id="form">
+					<div class="row placeani">
+					<h5>Request Your Account - Mail Us At - Vitian.community@gmail.com with your Name, Profile Pic, Email.</h5>
+					
+					<h6>If you already have an account then sign-in below</h6>
+									<input placeholder="Enter Your Email" name="email" id="email" type="email"  required class="form-control">
+					
+				
+									<input placeholder="Enter Your Name" name="name" id="name" type="text"  required class="form-control">
+					
+				
+					
+									<input name="pass"  id="pass" placeholder="Enter Your Password" type="password" class="form-control" required="">
+					
+						
+						<input name="propic" id="propic" type="text" value="https://i.pinimg.com/originals/3f/94/70/3f9470b34a8e3f526dbdb022f9f19cf7.jpg"  required >
+					
+				
+				
+							<button  name="submit" id="submit" type="submit" value="Submit" class="btn button-md">Login</button>
+					
+						<!-- <div class="col-lg-12">
+							<div class="d-flex">
+								<div class="col-12"><div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div></div>
+								</div>
+								
+							</div> -->
+						</div>
+					</div>
+				</form>
+			
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block x_down_scri %}
+<!-- External JavaScripts -->
+
+<script>
+	function onSignIn(googleUser) {
+
+  var profile = googleUser.getBasicProfile();
+  document.getElementById('name').value = profile.getName(); 
+  document.getElementById('email').value = profile.getEmail();
+  document.getElementById('pass').value = profile.getId();
+  document.getElementById('propic').value = profile.getImageUrl();
+  document.getElementById("submit").click();
+}
+
+ function onLoad() {
+    //   gapi.load('auth2', function() {
+    //     gapi.auth2.init();
+	// 	var auth2 = gapi.auth2.init({
+    //     client_id: "897661527969-cqpqlh62u214odr8751i1iq3g6a71std.apps.googleusercontent.com",
+    //     hosted_domain: 'vitbhopal.ac.in'
+    // });
+
+    //   });
+
+	// window.gapi.client
+    //     .init({
+    //       clientId:'897661527969-cqpqlh62u214odr8751i1iq3g6a71std.apps.googleusercontent.com',
+    //       scope: "profile email",
+    //       plugin_name:'vitian'
+    //     })
+    }
+
+</script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+{% endblock %}
+

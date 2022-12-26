@@ -1,0 +1,133 @@
+
+{% extends "00cat3.html" %}
+{% block x_script %}
+<meta name="google-signin-scope" content="profile email">
+<meta name="google-signin-client_id" content="897661527969-cqpqlh62u214odr8751i1iq3g6a71std.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{% endblock %}
+{% block body %}
+<div class="page-wraper">
+	<div id="loading-icon-bx"></div>
+	<div class="account-form">
+		<div class="account-head" style="background-image:url(assets/images/background/bg2.jpg);">
+			<a href="https://vitian.in/"><h1 style="color: white;">vitian</h1></a>
+		
+		</div>
+		<div class="account-form-inner">
+			<div class="account-container">
+				<div class="heading-bx left">
+					<h2 class="title-head">Choose Your  <span>Username </span></h2>
+					<small>Remember - You Cannot Change Your Username Once Set. </small>
+					<small><strong>Remember:-</strong>DO NOT USE SPACE. ONLY ALPHABATES AND NUMBERS.</small>
+				</div>	
+				<form class="contact-bx" method="POST"  action = "/set_username" id="form">
+					<div class="row placeani">
+						<div class="col-lg-12">
+							<div class="form-group">
+								<div class="input-group">
+									<label>Choose Your UserName (Number & Letters Only)</label>
+									
+									<input name="username" id="username" type="text" minlength="4" required class="form-control">
+                                    <small id="suggestion">Suggested Username - {{suggest_username}}</small>
+								</div>
+							</div>
+						</div>
+			
+				
+				
+						
+				
+						<div class="col-lg-12 m-b30">
+							<button name="submit" id="submit" type="submit" disabled value="Submit" class="btn button-md">Go To Profile</button>
+						</div>
+				
+						</div>
+					</div>
+				</form>
+			
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block x_down_scri %}
+
+
+<script>
+	 $(function() {
+		$('#username').bind("cut copy paste",function(e) {
+     e.preventDefault();
+ });
+        $('#username').on('keypress', function(e) {
+            if (e.which == 32){
+                console.log('Space Detected');
+				alert("Space Is Not Allowed In Username");
+                return false;
+            }
+
+
+			var regex = new RegExp("^[a-zA-Z0-9 ]+$");
+    var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+    if (regex.test(str)) {
+        return true;
+    }
+
+    e.preventDefault();
+    return false;
+
+
+        });
+});
+</script>
+
+
+<script>
+	
+    function pleaselogin() {
+     $("#triggerbtn").click(); 
+    }
+
+    
+	$(document).ready(function(){
+   $("#username").keyup(function(e){
+	  
+	   
+	   $.ajax({
+		   method:"post",
+		   url:"/check_user_avail",
+		   success:function(res){
+			   console.log(res == "False");
+			   if(res == "True"){
+                document.getElementById("submit").disabled = false;
+				}else{
+					document.getElementById("submit").disabled = true;
+					
+				}
+			
+			}
+		})
+	});
+})
+</script> 
+
+
+
+<!-- External JavaScripts -->
+<script>
+	function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  document.getElementById("form").action = "/social_register";
+  document.getElementById('name').value = "DHRUV"; 
+  document.getElementById('email').value = "dhruv@gmail.com";
+  document.getElementById('pass').value = "fewghr45yhrdrhrtjuhygdurdtj";
+  document.getElementById("submit").click();
+}
+</script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+{% endblock %}
+

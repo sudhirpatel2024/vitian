@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- META ============================================= -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="keywords" content="VIT wale , vitian , vitian Communtiy  , VIT Bhopal , VIT, VIT wale vit bhopal" />
+      <meta name="author" content="" />
+      <meta name="robots" content="" />
+      <!-- DESCRIPTION -->
+      <meta name="description" content="vitian is an unofficial community for the students of VIT. Students can explore different study material , info about clubs and events on vitian website." />
+      <!-- OG -->
+      <meta property="og:title" content="vitian" />
+      <meta property="og:description" content="vitian is an unofficial community for the students of VIT. Students can explore different study material , info about clubs and events on vitian website." />
+      <meta property="og:image" content="" />
+      <!-- FAVICONS ICON ============================================= -->
+      <link rel="icon" href="/static/website_images/logos/vitiansinglelogo.png"/>
+      <link rel="shortcut icon" type="image/x-icon" href="/static/website_images/logos/vitiansinglelogo.png"/>
+      <!-- PAGE TITLE HERE ============================================= -->
+      <title>Add A Exam Paper </title>
+      <!-- MOBILE SPECIFIC ============================================= -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.min.js"></script>
+      <script src="assets/js/respond.min.js"></script>
+      <![endif]-->
+      <!-- All PLUGINS CSS ============================================= -->
+      <link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'assets/css/assets.css')}}">
+      <!-- TYPOGRAPHY ============================================= -->
+      <link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'assets/css/typography.css')}}">
+      <!-- SHORTCODES ============================================= -->
+      <link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'assets/css/shortcodes/shortcodes.css')}}">
+      <!-- STYLESHEETS ============================================= -->
+      <link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'assets/css/style.css')}}">
+      <link class="skin" rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'assets/css/color/color-1.css')}}">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-0SZB71WDPJ"></script>
+      <style>
+         input::-webkit-outer-spin-button,
+         input::-webkit-inner-spin-button {
+         -webkit-appearance: none;
+         margin: 0;
+         }
+         .switch {
+         position: relative;
+         display: inline-block;
+         width: 60px;
+         height: 34px;
+         }
+         .switch input { 
+         opacity: 0;
+         width: 0;
+         height: 0;
+         }
+         .slider {
+         position: absolute;
+         cursor: pointer;
+         top: 0;
+         left: 0;
+         right: 0;
+         bottom: 0;
+         background-color: #ccc;
+         -webkit-transition: .4s;
+         transition: .4s;
+         }
+         .slider:before {
+         position: absolute;
+         content: "";
+         height: 26px;
+         width: 26px;
+         left: 4px;
+         bottom: 4px;
+         background-color: white;
+         -webkit-transition: .4s;
+         transition: .4s;
+         }
+         input:checked + .slider {
+         background-color: #2196F3;
+         }
+         input:focus + .slider {
+         box-shadow: 0 0 1px #2196F3;
+         }
+         input:checked + .slider:before {
+         -webkit-transform: translateX(26px);
+         -ms-transform: translateX(26px);
+         transform: translateX(26px);
+         }
+         /* Rounded sliders */
+         .slider.round {
+         border-radius: 34px;
+         }
+         .slider.round:before {
+         border-radius: 50%;
+         }
+      </style>
+      <link rel="stylesheet" href="{{url_for('static',filename = 'build/css/intlTelInput.css')}}">
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C0Y0J3BLQY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C0Y0J3BLQY');
+</script>
+   </head>
+   <body id="bg" onload="notification()">
+      <div class="page-wraper" style="display: inline;" id="step1">
+         <div id="loading-icon-bx"></div>
+         <div class="account-form">
+            <div class="account-head" style="background-image:url(assets/images/background/bg2.jpg);">
+               <a href="index.html"><img src="assets/images/logo-white-2.png" alt=""></a>
+            </div>
+            <div class="account-form-inner">
+               <div class="account-container">
+                  <div class="heading-bx left">
+                     <h2 class="title-head">Add <span>A New Exam Paper</span></h2>
+                     <p>Step 1 out of 1</p>
+                     <p>NOTE -- DO NOT CLICK REFRESH OR EXIT THE WEBSITE WITHOUT FILLING ALL FIELDS.</p>
+                     <small>* - required field</small>
+                  </div>
+                  <div class="contact-bx" >
+                     <div class="row placeani">
+         
+
+                        <form action="/addpaper" method="POST">
+                        <div class="col-lg-12">
+                           <h6>Name Of The Paper*</h6>
+                           <div class="form-group">
+                              <div class="input-group">
+                                 <label>Enter The Name Of The Paper</label>
+                                 <input name="name"  id="name" type="text" required  class="form-control"  >
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <h6>Course Name Of The Paper*</h6>
+                            <div class="form-group">
+                               <div class="input-group">
+                                  <label>Enter Course Name Of The Paper</label>
+                                  <input name="course"  id="name" type="text" required  class="form-control"  >
+                               </div>
+                            </div>
+                         </div>
+                         <div class="col-lg-12">
+                            <h6>Course Code Of The Paper*</h6>
+                            <div class="form-group">
+                               <div class="input-group">
+                                  <label for="cc" >Enter Course Code Of The Paper</label>
+                                  <input name="cc"  id="cc" type="text" required  class="form-control"  >
+                               </div>
+                            </div>
+                         </div>
+
+                         <div class="input-group">
+                            <div class="row">
+                               <div class="col-md-6 col-12 ">
+                                  <p>Paper's Semester* (ex. - 1,2,3,4)</p>
+                                  <input type="number"   id="sem" name="sem" required>
+                                 
+                               </div>
+                               <div class="col-md-6 col-12 ">
+                                  <p>Paper's Year* (ex. - 2016 , 2017 , ..)</p>
+                                  <input type="number"  name="year" id="year" required>
+                       
+                               </div>
+                            </div>
+                         </div>
+                      
+<br><br>
+<div class="mb-6"></div>
+                      <div class="col-lg-12">
+                        <h6> Paper's Faculty Name*</h6>
+                        <div class="form-group">
+                            <div class="input-group">
+                               <label for="fac">Enter Paper's Faculty Name</label>
+                               <input id="fac"  name="fac"  type="text" class="form-control" required>
+                            </div>
+                         </div>
+                     </div>
+
+
+                     <div class="col-lg-12">
+                        <h6>This Content Is Give By*</h6>
+                        <div class="form-group">
+                            <div class="input-group">
+                               <label for="repuser">Enter His/Her Username</label>
+                               <input id="repuser"   name="repuser" type="text" class="form-control" required>
+                            </div>
+                         </div>
+                     </div>
+
+
+                   <div class="col-lg-12">
+                        <h6>Google Drive Link Of The Paper*</h6>
+                        <div class="form-group">
+                            <div class="input-group">
+                               <label for="pap_googled_link">Enter Google Drive Link</label>
+                               <input id="pap_googled_link"   name="pap_googled_link" type="text" class="form-control" required>
+                            </div>
+                         </div>
+                     </div>
+
+                   
+                 
+                     <div class="col-lg-12">
+                        <h6>Google Drive Link Of The Paper's Solution</h6>
+                        <div class="form-group">
+                            <div class="input-group">
+                               <label for="pap_sol_googled_link">Enter Google Drive Link</label>
+                               <input id="pap_sol_googled_link"   name="pap_sol_googled_link" type="text" class="form-control" >
+                            </div>  
+                         </div>
+                     </div>
+
+              
+        
+
+                     <div class="col-lg-12">
+                        <h6>Username Of Paper's Solution Submitter</h6>
+                        <div class="form-group">
+                            <div class="input-group">
+                               <label for="soluser">Enter Submitter Username</label>
+                               <input id="soluser"   name="soluser" type="text" class="form-control" >
+                            </div>
+                         </div>
+                     </div>
+                    </div>
+
+
+                        <div class="col-lg-12 m-b30">
+                           <button type="submit" class="btn button-md">Submit</button>
+                        </div>
+                    </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!-- STEP 3 -->
+      
+      <script src="{{url_for('static',filename = 'assets/js/jquery.min.js')}}"></script>
+      <script src="{{url_for('static',filename = 'assets/vendors/bootstrap/js/popper.min.js')}}"></script>
+      <script src="{{url_for('static',filename = 'assets/vendors/bootstrap/js/bootstrap.min.js')}}"></script>
+      <script src="{{url_for('static',filename = 'assets/vendors/bootstrap-select/bootstrap-select.min.js')}}"></script>
+      <script src="{{url_for('static',filename = 'assets/vendors/bootstrap-touchspin/jquery.bootstrap-touchspin.js')}}"></script>
+      <script src="{{url_for('static',filename = 'assets/vendors/magnific-popup/magnific-popup.js')}}"></script>
+      <script src="{{url_for('static',filename = 'assets/vendors/counter/waypoints-min.js')}}"></script>
+      <script src="{{url_for('static',filename = 'assets/vendors/counter/counterup.min.js')}}"></script>
+      <script src="{{url_for('static',filename = 'assets/vendors/imagesloaded/imagesloaded.js')}}"></script>
+      <script src="{{url_for('static',filename = 'assets/vendors/masonry/masonry.js')}}"></script>
+      <script src="{{url_for('static',filename = 'assets/vendors/masonry/filter.js')}}"></script>
+      <script src="{{url_for('static',filename = 'assets/vendors/owl-carousel/owl.carousel.js')}}"></script>
+      <script src="{{url_for('static',filename = 'assets/js/functions.js')}}"></script>
+      <script src="{{url_for('static',filename = 'assets/js/contact.js')}}"></script>
+      <script src="{{url_for('static',filename = 'assets/vendors/switcher/switcher.js')}}"></script>
+   </body>
+</html>

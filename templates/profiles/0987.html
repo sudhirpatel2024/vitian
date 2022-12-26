@@ -1,0 +1,585 @@
+
+        {% extends "club_def.html" %}
+            {% block seo %}
+            <!DOCTYPE html>
+            <html lang="en">
+
+            <head>
+
+                <!-- META ============================================= -->
+                <meta charset="utf-8">
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="keywords" content="0987,12345,12345,VIT WALE"/>
+                <meta name="author" content="VIT WALE"/>
+
+
+                <!-- DESCRIPTION -->
+                <meta name="description" content="Check out the profile of 0987 on VIT WALE Community. Follow 0987 On VITWALE"/>
+
+                <!-- OG -->
+                <meta property="og:title" content="0987"/>
+                <meta property="og:description" content="Check out the profile of 0987 on VIT WALE Community. Follow 0987 On VITWALE"/>
+
+                <!-- FAVICONS ICON ============================================= -->
+                <link rel="icon" href="{{user.propicurl}}"/>
+                <link rel="shortcut icon" type="image/x-icon" href="{{user.propicurl}}"/>
+
+                <!-- PAGE TITLE HERE ============================================= -->
+                <title>0987 On VITWale</title>
+
+                <!-- MOBILE SPECIFIC ============================================= -->
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-signin-client_id" content="897661527969-cqpqlh62u214odr8751i1iq3g6a71std.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>   
+
+
+
+
+
+            {% endblock %}
+    
+        
+
+
+            {% block body %}
+          
+            <!-- Content -->
+            <div class="page-content bg-white">
+                <!-- inner page banner -->
+
+                <!-- Breadcrumb row -->
+                <div class="breadcrumb-row">
+                    <div class="container">
+                        <ul class="list-inline">
+                            <li><a href="{{url_for('index')}}">Home</a></li>
+                            <li>Profile</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Breadcrumb row END -->
+                <!-- inner page banner END -->
+                <div class="content-block">
+                    <div style="padding-top: 50px;" ></div>
+                    <div class="container">
+                        {% if owner %}
+                    <h4>Share Your Profile </h4>
+                    {% else %}
+                    <h4>Share This Profile </h4>
+                    {% endif %}
+                        <h6> <div class="sharethis-inline-share-buttons"></div></h6>
+
+                        {% if owner %}
+
+                        <a href="{{url_for('logout')}}" onclick="signOut();" style="float: right; bottom: 0;  "  class="btn btn-danger">Logout</a>
+
+
+                        {% endif %}
+
+                </div>
+                    <!-- About Us -->
+                    <div class="section-area section-sp1">
+                        <div class="container">
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 col-sm-12 m-b30">
+                                    <div class="profile-bx text-center">
+                                        <div class="user-profile-thumb">
+                                            <img src="{{user.propicurl}}"
+                                                alt=""/>
+                                        </div>
+                                        <div class="profile-info">
+                                        {% if owner %}
+                                        {% else %}
+                                        {% if current_user.is_authenticated %}
+                                        {% if followed %}
+                                        <span><button id="followbtn"   class="btn btn-success">Following</button></span>
+                                        {% else %}
+                                        <span><button id="followbtn"   class="btn btn-success">Follow</button></span>
+                                        {% endif %}
+                                        {% else %}
+                                        <span><button onclick="alert('Please Login To Follow This User');"  class="btn btn-success">Follow</button></span>
+                                        {% endif %}
+                                        {% endif %}
+                                            <div class="mb-3"></div>
+                                            <h4>{{user.name}}</h4>
+                                            <span>{{user.level}}</span><br>
+                                            <span>@{{user.username}}</span><br>
+                                            <span style="color: black;">{{user.followers}} Followers , {{user.reputation}} Repu</span>
+
+
+                                        </div>
+                                       
+                                        <div class="profile-tabnav">
+                                            <ul class="nav nav-tabs">
+
+                                                <li class="nav-item">
+
+                                                    <a class="nav-link active" data-toggle="tab" href="#courses"><i
+                                                            class="fa fa-th"></i>
+                                                        {% if owner %}
+                                                        My Posts & Blogs
+
+                                                            {% else %}
+
+                                                            User's Posts & Blogs
+                                                            {% endif %}
+                                                        </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    {% if owner %}
+                                                    <a class="nav-link" data-toggle="tab" href="#edit-profile"><i
+                                                            class="fa fa-pencil-square-o"></i>
+
+                                                            Edit Profile
+
+                                                        </a>
+
+                                                            {% else %}
+                                                            <a class="nav-link" data-toggle="tab" href="#edit-profile"><i
+                                                                class="fa fa-user"></i>
+
+                                                                Profile
+
+                                                            </a>
+                                                            {% endif %}
+
+
+                                                </li>
+
+                                                {% if owner %}
+                                        
+                                                <li class="nav-item">
+                                                
+                                                    <a class="nav-link" onclick="alert('This Feature Will Coming Soon!');"><i
+                                                            class="fa fa-plus"></i>Create Post Or Blog</a>
+                                                
+                                                </li>
+
+                                                {% endif %}
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-9 col-md-8 col-sm-12 m-b30">
+                                    <div class="profile-content-bx">
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="courses">
+                                                <div class="profile-head">
+                                    
+                                                    <h3>Posts & Blogs</h3>
+                                                    
+                                                    <div class="feature-filters style1 ml-auto">
+                                                        <ul class="filters" data-toggle="buttons">
+                                                            {% if user.posts != ""  or user.blogs != ""  %}
+                                                    
+                                                            <li data-filter="" class="btn active">
+                                                                <input type="radio">
+                                                                <a href="#"><span>All</span></a> 
+                                                            </li>
+                                                            {% if user.posts != "" %}
+                                                            <li data-filter="publish" class="btn">
+                                                                <input type="radio">
+                                                                <a href="#"><span>Posts</span></a> 
+                                                            </li>
+                                                            {% endif %}
+                                                            {% if user.blogs != "" %}
+                                                            <li data-filter="pending" class="btn">
+                                                                <input type="radio">
+                                                                <a href="#"><span>Blogs</span></a> 
+                                                            </li>
+                                                        {% endif %}
+                                                        {% else %}
+                                                        NO POSTS YET
+                                                            {% endif %}
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            
+                                                <div class="courses-filter">
+                                                    <div class="clearfix">
+                                                        <ul id="masonry" class="ttr-gallery-listing magnific-image row">
+
+                                                            {% for post in user_post %}
+                                                            <li class="action-card col-xl-4 col-lg-6 col-md-12 col-sm-6 publish">
+                                                                <div class="cours-bx">
+                                                                    <div class="action-box">
+                                                                        <img src="static/website_images/posts/{{post.image}}" alt="">
+                                                                    </div>
+                                                                    <div class="info-bx text-center">
+                                                                        <h6><a href="#">{{user_post.about}}</a></h6>
+                                                                    </div>
+                                                            
+                                                                </div>
+                                                            </li>
+                                                            {% endfor %}
+                                                    {% for blog in user_blog %}
+                                                            <li class="action-card col-xl-4 col-lg-6 col-md-12 col-sm-6 pending">
+                                                                <div class="cours-bx">
+                                                                    <div class="action-box">
+                                                                        <img src="static/website_images/blog_images/{{blog.thumbnail}}" alt="">
+                                                                        <a href="#" class="btn">Read More</a>
+                                                                    </div>
+                                                                    <div class="info-bx text-center">
+                                                                        <h5><a href="#">{{blog.heading}}</a></h5>
+                                                                        <span>{{blog.date}}</span>
+                                                                    </div>
+                                                            
+                                                                </div>
+                                                            </li>
+                                                            {% endfor %}
+                                                
+                                                        
+                                    
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" id="del-account">
+                                                <div class="profile-head">
+                                                    <h3>Delete Your Account</h3>
+                                                </div>
+                                                <form class="edit-profile" action="/pro_feedback" method="post">
+                                                    <div class="">
+                                                        <div class="form-group row">
+                                                            <div class="col-12 col-sm-9 col-md-9 col-lg-10 ml-auto">
+                                                                <h2 style="color: red;">Danger Zone</h2>
+                                                            </div>
+                                                        </div>
+                                                        {% if ads|length != 0 %}
+                                                        <div class="form-group row">
+                                                            <div class="col-12 col-sm-9 col-md-9 col-lg-10 ml-auto">
+                                                                <h3>You have <span style="color: blue;">{{views}} +</span> views on Your ADs
+                                                                </h3>
+                                                            </div>
+                                                        </div>
+                                                        {% endif %}
+                                                        <div class="form-group row">
+                                                            <div class="col-12 col-sm-9 col-md-9 col-lg-10 ml-auto">
+                                                                <h3>Your Will <span style="color: blue;">Loose All Your Data</span> & You Won't Able To Recover Your Account.
+                                                                </h3>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group row">
+                                                            <div class="col-12 col-sm-9 col-md-9 col-lg-10 ml-auto">
+                                                                <h3>Have any issue?, Share with us!</h3>
+                                                                <div class="form-group row">
+                                                                    <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Write
+                                                                        Issue Here!</label><br>
+                                                                    <div class="col-12 col-sm-9 col-md-9 col-lg-7">
+                                                                        <textarea class="form-control" id="body" name="body"
+                                                                                cols="30" rows="10"></textarea>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="">
+                                                            <div class="">
+                                                                <div class="row">
+                                                                    <div class="col-12 col-sm-3 col-md-3 col-lg-2">
+                                                                    </div>
+                                                                    <div class="col-12 col-sm-9 col-md-9 col-lg-7">
+                                                                        <button type="submit" class="btn"><i
+                                                                                class="fa fa-share"></i> Send
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="seperator"></div>
+                                                        <div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
+                                                        <br>
+                                                        <br>
+                                                        <br>
+
+                                                        <div class="form-group row">
+                                                            <div class="col-12 col-sm-9 col-md-9 col-lg-10 ml-auto">
+                                                                <h6>Deleting your account will delete all your data from VITwale
+                                                                    Website and you won't able to recover your data.</h6>
+                                                            </div>
+                                                        </div>
+                                                        <div class="seperator"></div>
+
+
+                                                        <div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
+
+                                                    </div>
+                                                    <div class="">
+                                                        <div class="">
+                                                            <div class="row">
+                                                                <div class="col-12 col-sm-3 col-md-3 col-lg-2">
+                                                                </div>
+                                                                <div class="col-12 col-sm-9 col-md-9 col-lg-7">
+                                                                    <button type="reset" class="btn-danger" data-toggle="modal"
+                                                                            data-target="#DelModalCenter">Delete
+                                                                    </button>
+
+
+                                                                    <!-- Modal -->
+                                                                    <div class="modal fade" id="exampleModalCenter" tabindex="-1"
+                                                                        role="dialog" aria-labelledby="exampleModalCenterTitle"
+                                                                        aria-hidden="true">
+                                                                        <div class="modal-dialog modal-dialog-centered"
+                                                                            role="document">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title"
+                                                                                        id="exampleModalLongTitle">Confirmation</h5>
+                                                                                    <button type="button" class="close"
+                                                                                            data-dismiss="modal" aria-label="Close">
+                                                                                        <span aria-hidden="true">&times;</span>
+                                                                                    </button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    <h5>Are you sure to delete your account</h5>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-secondary"
+                                                                                            data-dismiss="modal">No
+                                                                                    </button>
+                                                                                    <button type="button" class="btn btn-primary">
+                                                                                        Yes
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <button type="reset" class="btn-success">Cancel</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="tab-pane" id="edit-profile">
+                                                <div class="profile-head">
+                                                    {% if owner %}
+                                                    <h3>Edit Profile</h3>
+                                                    {% else %}
+                                                    <h3>Profile Detail</h3>
+                                                    {% endif %}
+                                                </div>
+                                                <form class="edit-profile" action="/save_profile" method="post">
+                                                    <div class="">
+                                                        <div class="form-group row">
+                                                            <div class="col-12 col-sm-9 col-md-9 col-lg-10 ml-auto">
+                                                                <h3>1. Personal Details</h3>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="name_div" class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Full
+                                                                Name</label>
+
+                                                            <div class="col-12 col-sm-9 col-md-9 col-lg-7" name="name_div">
+                                                                {% if owner %}
+                                                                <input class="form-control" name="name" type="text"
+                                                                    value="{{user.name}}">
+                                                                    {% else %}
+                                                                    <input class="form-control" name="name" type="text"
+                                                                    value="{{user.name}}" readonly>
+                                                                    {% endif %}
+                                                            </div></div>
+
+
+
+                                                            <div class="form-group row">
+                                                            <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label" for="username_div">
+                                                                VITwale Username</label>
+
+                                                                <div class="col-12 col-sm-9 col-md-9 col-lg-7" name="username_div">
+                                                                    {% if owner %}
+                                                                    <input class="form-control" name="name" type="text"
+                                                                        value="{{user.username}}" readonly>
+                                                                        {% else %}
+                                                                        <input class="form-control" name="name" type="text"
+                                                                        value="{{user.username}}" readonly>
+                                                                        {% endif %}
+                                                                </div>
+                                                        </div>
+
+                                                        <div class="seperator"></div>
+
+                                                        <div class="form-group row">
+                                                            <div class="col-12 col-sm-9 col-md-9 col-lg-10 ml-auto">
+                                                                <h3>2. Other Details</h3>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Email
+                                                                Address</label>
+                                                            <div class="col-12 col-sm-9 col-md-9 col-lg-7">
+                                                                <input class="form-control" type="email" value="{{user.email}}"
+                                                                    readonly>
+                                                                    {% if owner %}
+                                                                <small>You cannot change your email address.</small>
+                                                                {% endif %}
+                                                            </div>
+                                                        </div>
+
+                                                   
+
+
+
+                                                        <div class="form-group row">
+                                                            <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Branch</label>
+                                                            <div class="col-12 col-sm-9 col-md-9 col-lg-7">
+                                                            
+                                                                    {% if owner %}
+                                                                    <input class="form-control" name="branch" type="text" value="{{user.branch}}"
+                                                                    >
+                                                            
+                                                                {% else %}
+                                                                <input class="form-control" name="branch" type="text" readonly value="{{user.branch}}"
+                                                                >
+                                                                {% endif %}
+                                                            </div>
+                                                        </div>
+
+
+
+                                                        <div class="form-group row">
+                                                            <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Bio</label>
+                                                            <div class="col-12 col-sm-9 col-md-9 col-lg-7">
+                                                            
+                                                                    {% if owner %}
+                                                                    <textarea class="form-control" name="bio">{{user.bio}}</textarea>
+                                                                
+                                                                {% else %}
+                                                                <textarea class="form-control" name="bio" readonly>{{user.bio}}</textarea>
+                                                                {% endif %}
+                                                            </div>
+                                                        </div>
+
+
+                
+                                                        <!-- <div class="form-group row">
+                                                            <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Phone
+                                                                Number:</label>
+                                                            <div class="col-12 col-sm-9 col-md-9 col-lg-7">
+                                                                {% if not user.phone_no %}
+                                                                {% if owner %}
+                                                                <input class="form-control" type="tel" id="phone" name="phone"
+                                                                    placeholder="Not Given Yet" pattern=".{10,}" min="1111111111" max="9999999999">
+                                                                {% else %}
+                                                                <input class="form-control" type="tel" id="phone" name="phone"  readonly
+                                                                    placeholder="Not Given Yet" pattern=".{10,}" min="1111111111" max="9999999999">
+                                                                {% endif %}
+                                                                {% else %}
+                                                                {% if owner %}
+                                                                <input class="form-control" type="tel" id="phone" name="phone"
+                                                                    placeholder="Enter your phone no." value="{{user.phone_no}}" pattern=".{10,}" min="1111111111" max="9999999999">
+                                                                    {% else %}
+                                                                    <input class="form-control" type="tel" id="phone" name="phone" readonly
+                                                                    placeholder="Enter your phone no." value="{{user.phone_no}}" pattern=".{10,}" min="1111111111" max="9999999999">
+                                                                    {% endif %}
+                                                                {% endif %}
+                                                            </div>
+                                                        </div> -->
+
+                                                        <div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
+
+                                                    </div>
+                                                    <div class="">
+                                                        <div class="">
+                                                            <div class="row">
+                                                                <div class="col-12 col-sm-3 col-md-3 col-lg-2">
+                                                                </div>
+                                                                {% if owner %}
+                                                                <div class="col-12 col-sm-9 col-md-9 col-lg-7">
+
+                                                                    <button type="submit" class="btn">Save changes</button>
+
+                                                                    <button type="reset" class="btn-secondry">Cancel</button>
+                                                                </div>
+                                                                {% endif %}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                    
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- contact area END -->
+            </div>
+
+
+
+
+
+
+
+
+            <div class="modal fade" id="DelModalCenter" tabindex="-1" role="dialog" aria-labelledby="DelModalCenterTitle"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="DelModalLongTitle">Confirmation </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="email" name="cmail" id="cmail" onkeyup="check();" class="form-control"
+                                placeholder="Re-enter your email address">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                            <form action="/delete_account" method="post">      
+                                <button type="submit" onclick="signOut();" class="btn btn-danger" id="delbtn" disabled>Delete My Account</button>
+
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+<a href="{{url_for('logout')}}" id="logout_a" hidden></a>
+
+<script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+            <script>
+
+                $(document).ready(function(){
+            $("#followbtn").click(function(e){
+                id = "{{user.id}}";
+
+                $.ajax({
+                    method:"post",
+                    url:"/followuser",
+                    // data:{backendname:valueName}
+                    data:{id:id},
+                    success:function(res){
+                        if(document.getElementById("followbtn").innerHTML == 'Follow'){
+                            document.getElementById("followbtn").innerHTML = 'Following';
+                            }else{
+                                document.getElementById("followbtn").innerHTML = 'Follow';
+
+                            }
+
+                        }
+                    })
+                });
+            })
+            </script> 
+            <!-- Content END-->
+            <!-- Footer ==== -->
+            {% endblock %}
+
+            
+
+
+                    
+
+                    
+                    

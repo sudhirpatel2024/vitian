@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<!-- META ============================================= -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="VIT wale , vitian , vitian Communtiy  , VIT Bhopal , VIT, VIT wale vit bhopal"/>
+	<meta name="author" content="VITIANS" />
+	
+	<!-- DESCRIPTION -->
+	<meta name="description" content="vitian is an unofficial community for the students of VIT. Students can explore different study material , info about clubs and events on vitian website."/>
+	
+	<!-- OG -->
+	<meta property="og:title" content="vitian" />
+	<meta property="og:description" content="vitian is an unofficial community for the students of VIT. Students can explore different study material , info about clubs and events on vitian website." />
+	
+	<!-- FAVICONS ICON ============================================= -->
+	<link rel="icon" href="/static/assets/images/onrent1logo.png"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/static/assets/images/onrent1logo.png"/>
+	
+	<!-- PAGE TITLE HERE ============================================= -->
+	<title>vitian</title>
+	
+	<!-- MOBILE SPECIFIC ============================================= -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!--[if lt IE 9]>
+	<script src="assets/js/html5shiv.min.js"></script>
+	<script src="assets/js/respond.min.js"></script>
+	<![endif]-->
+	
+	<!-- All PLUGINS CSS ============================================= -->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'assets/css/assets.css')}}">
+	
+	<!-- TYPOGRAPHY ============================================= -->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'assets/css/typography.css')}}">
+	
+	<!-- SHORTCODES ============================================= -->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'assets/css/shortcodes/shortcodes.css')}}">
+	
+	<!-- STYLESHEETS ============================================= -->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'assets/css/style.css')}}">
+    <link class="skin" rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'assets/css/color/color-1.css')}}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C0Y0J3BLQY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C0Y0J3BLQY');
+</script>
+	{% with messages = get_flashed_messages(with_categories=true) %}
+	{% if messages %}
+	
+	{% for category, message in messages %}
+	
+	<div class="alert alert-warning alert-dismissible fade show" style="font-family: rubik;"  role="alert" id="noti">
+		<strong>{{message}}</strong>
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		  <span aria-hidden="true">&times;</span>
+		</button>
+	  </div>
+	{% endfor %}
+	
+	{% endif %}
+{% endwith %}
+
+
+    {% block x_css %}
+    {%endblock%}
+{% block x_script %}
+{% endblock %}
+
+
+<body id="bg" onload="notification()">
+{% block fb %}
+{% endblock %}
+
+{% block body %}
+{%endblock %}
+
+{% block x_down_scri %}
+{% endblock %}
+
+<script>
+  
+	
+    $(document).ready(function(){
+       		$.getJSON('https://api.ipify.org?format=jsonp&callback=?', function(data) {
+				  // console.log(JSON.stringify(data, null, 2));
+			
+				  var ip = JSON.stringify(data);
+				  $.ajax({
+                		method:"post",
+                		url:"/visitor",
+
+                		data:{ip:ip},
+                		success:function(res){
+						
+							console.log("New Viewer");
+						
+										}
+			})
+				   
+			});
+})
+</script>
+
+
+<script>
+    $(document).ready(function(){
+                $.getJSON('https://api.ipify.org?format=jsonp&callback=?', function(data) {
+                   // console.log(JSON.stringify(data, null, 2));
+             
+                   var ip = JSON.stringify(data);
+                   $.ajax({
+                         method:"post",
+                         url:"/unique_visit",
+ 
+                         data:{ip:ip},
+                         success:function(res){
+                             console.log(res);
+                         console.log("WELCOME TO VIT WALE");
+                         
+                                         }
+             })
+                    
+             });
+ })
+ </script>
+
+ 
+<script>
+    function notification() {
+      setTimeout(function(){ $("#noti").alert('close') }, 5000);
+    }
+    </script>
+<script src="{{url_for('static',filename = 'assets/js/jquery.min.js')}}"></script>
+<script src="{{url_for('static',filename = 'assets/vendors/bootstrap/js/popper.min.js')}}"></script>
+<script src="{{url_for('static',filename = 'assets/vendors/bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="{{url_for('static',filename = 'assets/vendors/bootstrap-select/bootstrap-select.min.js')}}"></script>
+<script src="{{url_for('static',filename = 'assets/vendors/bootstrap-touchspin/jquery.bootstrap-touchspin.js')}}"></script>
+<script src="{{url_for('static',filename = 'assets/vendors/magnific-popup/magnific-popup.js')}}"></script>
+<script src="{{url_for('static',filename = 'assets/vendors/counter/waypoints-min.js')}}"></script>
+<script src="{{url_for('static',filename = 'assets/vendors/counter/counterup.min.js')}}"></script>
+<script src="{{url_for('static',filename = 'assets/vendors/imagesloaded/imagesloaded.js')}}"></script>
+<script src="{{url_for('static',filename = 'assets/vendors/masonry/masonry.js')}}"></script>
+<script src="{{url_for('static',filename = 'assets/vendors/masonry/filter.js')}}"></script>
+<script src="{{url_for('static',filename = 'assets/vendors/owl-carousel/owl.carousel.js')}}"></script>
+<script src="{{url_for('static',filename = 'assets/js/functions.js')}}"></script>
+<script src="{{url_for('static',filename = 'assets/js/contact.js')}}"></script>
+<script src="{{url_for('static',filename = 'assets/vendors/switcher/switcher.js')}}"></script>
+</body>
+
+</html>

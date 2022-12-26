@@ -1,0 +1,250 @@
+	{% block seo %}
+    {% endblock %}
+    <!-- MOBILE SPECIFIC ============================================= -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+  <!-- All PLUGINS CSS ============================================= -->
+  <link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'assets/css/assets.css')}}">
+
+  <!-- TYPOGRAPHY ============================================= -->
+  <link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'assets/css/typography.css')}}">
+
+  <!-- SHORTCODES ============================================= -->
+  <link rel="stylesheet" type="text/css"
+		href="{{url_for('static',filename = 'assets/css/shortcodes/shortcodes.css')}}">
+
+  <!-- STYLESHEETS ============================================= -->
+  <link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'assets/css/style.css')}}">
+  <link class="skin" rel="stylesheet" type="text/css"
+		href="{{url_for('static',filename = 'assets/css/color/color-1.css')}}">
+
+  <!-- REVOLUTION SLIDER CSS ============================================= -->
+  <link rel="stylesheet" type="text/css"
+		href="{{url_for('static',filename = 'assets/vendors/revolution/css/layers.css')}}">
+  <link rel="stylesheet" type="text/css"
+		href="{{url_for('static',filename = 'assets/vendors/revolution/css/settings.css')}}">
+  <link rel="stylesheet" type="text/css"
+		href="{{url_for('static',filename = 'assets/vendors/revolution/css/navigation.css')}}">
+  <!-- REVOLUTION SLIDER END -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C0Y0J3BLQY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C0Y0J3BLQY');
+  
+</script>
+</head>
+<body id="bg">
+    <script>
+        function signOut() {
+  
+          
+          var auth2 = gapi.auth2.getAuthInstance();
+          auth2.signOut().then(function () {
+            document.getElementById("logout_a").click();
+            console.log('User signed out.');
+          });
+          
+        }
+        function onLoad() {
+        gapi.load('auth2', function() {
+          gapi.auth2.init();
+        });
+      }
+      </script>
+<div class="page-wraper">
+<!-- <div id="loading-icon-bx"></div> -->
+<div class="onepage"></div>
+
+
+
+
+
+<header class="header rs-nav">
+    <div class="top-bar">
+        <div class="container">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+
+            {% for category, message in messages %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert" id="noti">
+                <strong>{{message}}</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+              {% endfor %}
+
+            {% endif %}
+            {% endwith %}
+            <div class="row d-flex justify-content-between">
+                <div class="topbar-left">
+                    <ul>
+                        <li><a href="mailto:vitian.community@gmail.com"><i class="fa fa-envelope-o"></i>vitian.community@gmail.com</a></li>
+                    </ul>
+                </div>
+                <div class="topbar-right">
+                    <ul>
+                        <li>
+                            MADE BY VITIANS FOR VITIANS
+                        </li>
+                        <!-- {% if current_user.is_authenticated %}
+                        <li><a href=""><i class="fa fa-user-circle"></i> &nbsp; {{user_name}}</a></li>
+                        {% else %}
+                        <li><a href="">Login</a></li>
+                        <li><a href="">Register</a></li>
+                        {% endif %} -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sticky-header navbar-expand-lg">
+        <div class="menu-bar clearfix">
+            <div class="container clearfix">
+                <!-- Header Logo ==== -->
+                <div class="menu-logo">
+                    <a href="https://vitian.in/"><img src="static/pro_image/logo_black.png"   alt=""></a>
+                </div>
+                <!-- Mobile Nav Button ==== -->
+                <button class="navbar-toggler collapsed menuicon justify-content-end" type="button"
+                data-toggle="collapse" data-target="#menuDropdown" aria-controls="menuDropdown"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <!-- Author Nav ==== -->
+            <div class="secondary-menu">
+                <div class="secondary-inner">
+                    <ul>
+                        <!-- <li><a href="https://www.facebook.com/aldsonrent1" target="_blank" class="btn-link"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://www.instagram.com/aldsonrent1/" target="_blank" class="btn-link"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="https://www.youtube.com/channel/UCnZ7gMkT6VCEMP3JsRiVmdA" target="_blank" class="btn-link"><i class="fa fa-youtube"></i></a></li> -->
+                        <!-- <li><a href="javascript:;" class="btn-link"><i class="fa fa-linkedin"></i></a></li> -->
+                        <!-- Search Button ==== -->
+                        <!--                                <li class="search-btn">-->
+                            <!--                                    <button id="quik-search-btn" type="button" class="btn-link"><i-->
+                                <!--                                            class="fa fa-search"></i></button>-->
+                                <!--                                </li>-->
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Search Box ==== -->
+                    <div class="nav-search-bar">
+                        <form class="cours-search" id="navsearchform" method="POST" action="">
+                            <input type="text" class="form-control" name="navsearchbox" id="navsearchbox" autocomplete="off"
+                            placeholder="Search Any Address, City, Pincode..." list="navresults">
+                            <datalist id="navresults">
+                                <option value='Try to search any address'>Ready To Move!!</option>
+                            </datalist>
+                            <span id="navsearchbtn"><i class="ti-search"></i></span>
+                        </form>
+                        <span id="search-remove"><i class="ti-close"></i></span>
+                    </div>
+                    <!-- Navigation Menu ==== -->
+                    <div class="menu-links navbar-collapse collapse justify-content-start" id="menuDropdown">
+                        <div class="menu-logo">
+                            <a href="https://vitian.in/"><img src="static/assets/pro_image/logo_black.png" alt=""></a>
+                        </div>
+                        <ul class="nav navbar-nav">
+                       
+                            <li><a href="https://vitian.in/">Home</a> </li>
+                            <li><a href="https://vitian.in/#events">Events AT VITB</a> </li>
+                            <li><a href="https://vitian.in/#clubs">Clubs AT VITB</a> </li>
+                            <li><a href="https://vitian.in/papers">vitian Exam Papers </a> </li>
+                     
+                           
+                            <li class="nav-dashboard"><a href="javascript:;">Account<i class="fa fa-chevron-down"></i></a>
+                                <ul class="sub-menu">
+                                    {% if current_user.is_authenticated %}
+                                    <li><a href="{{url_for('bprofile')}}">Your Profile</a></li>
+                                    {% else %}
+                                    <li><a href="{{url_for('bprofile')}}">Join vitian</a></li>
+                                    {% endif %}
+                                </ul>
+                            </li>
+                    </div>
+                    <!-- Navigation Menu END ==== -->
+                </div>
+            </div>
+        </div>
+    </header>
+    
+
+
+
+{% block body %}
+
+
+
+{% endblock %}
+
+
+
+<footer>
+        
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 text-center">&copy;
+                    Copyright 2021-22. <br><a >MADE BY VITIANS.</a> </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer END ==== -->
+<button class="back-to-top fa fa-chevron-up" ></button>
+</div>
+<!-- External JavaScripts -->
+<!-- External JavaScripts -->
+
+<script>
+    $(document).ready(function(){
+                $.getJSON('https://api.ipify.org?format=jsonp&callback=?', function(data) {
+                   // console.log(JSON.stringify(data, null, 2));
+             
+                   var ip = JSON.stringify(data);
+                   $.ajax({
+                         method:"post",
+                         url:"/unique_visit",
+ 
+                         data:{ip:ip},
+                         success:function(res){
+                             console.log(res);
+                         console.log("WELCOME TO VIT WALE");
+                         
+                                         }
+             })
+                    
+             });
+ })
+ </script>
+
+ 
+<script src="{{url_for('static',filename = 'assets/js/jquery.min.js')}}"></script>
+<script src="{{url_for('static',filename = 'assets/vendors/bootstrap/js/popper.min.js')}}"></script>
+<script src="{{url_for('static',filename = 'assets/vendors/bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="{{url_for('static',filename = 'assets/vendors/bootstrap-select/bootstrap-select.min.js')}}"></script>
+<script src="{{url_for('static',filename = 'assets/vendors/bootstrap-touchspin/jquery.bootstrap-touchspin.js')}}"></script>
+<script src="{{url_for('static',filename = 'assets/vendors/magnific-popup/magnific-popup.js')}}"></script>
+<script src="{{url_for('static',filename = 'assets/vendors/counter/waypoints-min.js')}}"></script>
+<script src="{{url_for('static',filename = 'assets/vendors/counter/counterup.min.js')}}"></script>
+<script src="{{url_for('static',filename = 'assets/vendors/imagesloaded/imagesloaded.js')}}"></script>
+<script src="{{url_for('static',filename = 'assets/vendors/masonry/masonry.js')}}"></script>
+<script src="{{url_for('static',filename = 'assets/vendors/masonry/filter.js')}}"></script>
+<script src="{{url_for('static',filename = 'assets/vendors/owl-carousel/owl.carousel.js')}}"></script>
+<script src="{{url_for('static',filename = 'assets/js/functions.js')}}"></script>
+<script src="{{url_for('static',filename = 'assets/js/contact.js')}}"></script>
+<script src="{{url_for('static',filename = 'assets/vendors/switcher/switcher.js')}}"></script>
+
+
+</body>
+
+</html>

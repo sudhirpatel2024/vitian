@@ -1,0 +1,167 @@
+{% extends 'club_def.html' %}
+{% block seo %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<!-- META ============================================= -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="vitian Exam Paper, Exam Paper VIT Bhopal, Exam VIT, vitian Exma Paper" />
+	<meta name="author" content="vitian" />
+	
+	<!-- DESCRIPTION -->
+	<meta name="description" content="Find previous year question paper which will help you to understand the level of question in VIT." />
+	
+	<!-- OG -->
+	<meta property="og:title" content="vitian - Exam Papers" />
+	<meta property="og:description" content="Find previous year question paper which will help you to understand the level of question in VIT." />
+	<meta property="og:image" content="/static/website_images/logos/vitiansinglelogo.png" />
+
+	
+	<!-- FAVICONS ICON ============================================= -->
+	<link rel="icon" href="/static/website_images/logos/vitiansinglelogo.png" type="image/x-icon" />
+	<link rel="shortcut icon" type="image/x-icon" href="/static/website_images/logos/vitiansinglelogo.png" />
+	
+	<!-- PAGE TITLE HERE ============================================= -->
+	<title>vitian - Exam Papers</title>
+	
+
+	<style>
+		table {
+		  border-collapse: collapse;
+		  border-spacing: 0;
+		  width: 100%;
+		  border: 1px solid #ddd;
+		}
+		
+		th, td {
+		  text-align: left;
+		  padding: 8px;
+		}
+		
+		tr:nth-child(even){background-color: #f2f2f2}
+		</style>
+</head>
+<body id="bg">
+<div class="page-wraper">
+<div id="loading-icon-bx"></div>
+<div class="onepage"></div>
+    <!-- Header Top ==== -->
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% block body %}
+    <!-- Content -->
+    <div class="page-content bg-white">
+  
+		<!-- Breadcrumb row -->
+		<div class="breadcrumb-row">
+			<div class="container">
+				<ul class="list-inline">
+					<li><a href="{{url_for('index')}}">Home</a></li>
+					<li>Exam Papers</li>
+				</ul>
+			</div>
+		</div>
+		<!-- Breadcrumb row END -->
+        <!-- inner page banner END -->
+		<div class="content-block">
+            <!-- About Us -->
+			<div class="section-area section-sp1">
+                <div class="container">
+					 <div class="row d-flex flex-row-reverse">
+					
+					
+						<div class="col-lg-12 col-md-12 col-sm-12">
+
+
+
+
+
+							<div style="overflow-x:auto;">
+
+							<table >
+								<thead>
+								  <tr>
+									<th scope="col">Course</th>
+									<th scope="col">Year</th>
+									<th scope="col">Faculty</th>
+									<th scope="col">Semester</th>
+									<th scope="col">Paper</th>
+									<th scope="col">Solution</th>
+								  </tr>
+								</thead>
+								<tbody>
+									{% for paper in papers %}
+
+								
+
+
+
+								  <tr>
+									<td>{{paper.paper_course}}</td>
+									<td>{{paper.paper_year}}</td>
+									<td>{{paper.paper_faculty}}</td>
+									<td>{{paper.paper_sem}}</td>
+									<td><a href="{{paper.paper_link}}" ><u>Download</u></a></td>
+									
+									{% if  paper.paper_sol_link == "" %}
+									<td>NOT AVAILABLE</td>
+									{% else %}
+									<td><a href="{{paper.paper_sol_link}}"><u>Download</u></a></td>
+									{% endif %}
+								  </tr>
+								  {% endfor %}
+								 
+						
+								</tbody>
+							  </table>
+							  </div>
+
+
+
+							</div>
+
+           
+						</div>
+						
+					</div>
+				</div>
+            </div>
+        </div>
+		<!-- contact area END -->
+		
+    </div>
+    <!-- Content END-->
+
+{% endblock %}
+
+
+
+
+
+
+
+
